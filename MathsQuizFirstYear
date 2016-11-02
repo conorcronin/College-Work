@@ -1,0 +1,329 @@
+/*Create a C program for a maths menu and quiz.
+Author: Conor Cronin
+Date: 6/11/13*/
+
+#include<stdio.h>
+#include<conio.h>//Only used for the clrscr(); command used on line 61.
+
+main()
+{
+    int choice = 0;//The user input for the menu.
+    int exit = 0;//Allows the program to shutdown when this value is changed. (Only in case 4.)
+    int rounds = 0;//The user input for how many questions they want to be asked for one instance of the quiz.
+    int ans1 = 6;
+    int ans2 = 7;
+    int ans3 = 10;
+    int ans4 = 50;
+    int ans5 = 27;//These five answers are hardcoded, acting as the quiz.
+    int right = 0;
+    int wrong = 0;//right and wrong are incremneted in each question to tally the users correct/incorrect answers.
+    
+    do
+    {
+        printf("\n1. Enter the number of questions to be asked for this round of the quiz.");    
+        printf("\n(maximum of 5 questions allowed)");//Will be between 1 and 5
+        printf("\n\n2. Start the quiz.");
+        printf("\n\n3. Display the number of questions that you answered in the last round:");
+        printf("\n(i)  Correctly.");
+        printf("\n(ii) Incorrectly.\n");
+        printf("\n4. Exit program.");
+        printf("\n\n Enter your choice: ");
+        scanf("%d", &choice);//Waits for player to input their choice
+        
+        if(choice !=1 && choice !=2 && choice !=3 && choice !=4)//Stops out of bound digits being entered, does not work for characters unfortunately.
+        {
+            printf("\nInvalid digit, please try again.\n");
+            getchar();
+        }
+        
+        if(rounds==0 && choice==2)//Stops users entering option 2 if they have not set how many questions they want to be asked in case 1.
+        {
+            printf("\n\nYou must enter how many questions you wish to be asked in case 1 first.\n\n");
+        }
+        
+        if(right==0 && wrong==0 && choice==3)//Stops users entering option 3 if they have not set how many questions they want to be asked in case 1.
+        {
+            printf("\n\nYou must enter how many questions you wished to be asked in case 1 first.\n\n");
+        }
+        
+        switch (choice)
+        {
+            case 1://Number of questions to be in the quiz.
+            {
+                printf("\n\nHow many question would you like to be asked? ");
+                scanf("%d", &rounds);
+                if(rounds !=1 && rounds !=2 && rounds !=3 && rounds !=4 && rounds !=5)//Error checking, stops invalid numbers from being entered.
+                {
+                    printf("\n\nInvalid character, must be between 1 and 5.\n\n");
+                    scanf("%d", &rounds);
+                }
+                
+                clrscr();//Stops the menu from re-displaying
+                break;
+            }
+            case 2://Starts the quiz.
+            {
+                printf("\n\nYou chose to answer %d questions. (Hit enter to start the quiz.)\n", rounds);//Refers to the number chosen in case 1.
+                flushall();
+                getchar();
+                
+                if(rounds == 1)//Checks how many quaestions the user wanted to be asked.
+                {
+                    printf("\nWhat is 2+4? ");
+                    scanf("%d", &ans1);
+                    
+                    if(ans1 == 6)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 6.\n");
+                        wrong++;
+                    }
+                    break;//End of question 1.
+                }//End of if(choice == 1)
+                
+                if(rounds == 2)
+                {
+                    printf("\nWhat is 2 + 4? ");
+                    scanf("%d", &ans1);
+                    
+                    if(ans1 == 6)
+                    {
+                        printf("\nCorrect.\n");
+                        right ++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 6.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 3 + 4? ");
+                    scanf("%d", &ans2);
+                    
+                    if(ans2 == 7)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 7.\n");
+                        wrong++;
+                    }
+                    break;
+                }
+                if(rounds == 3)
+                {
+                    printf("\nWhat is 2 + 4? ");
+                    scanf("%d", &ans1);
+                    
+                    if(ans1 == 6)
+                    {
+                        printf("\nCorrect.\n");
+                        right ++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 6.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 3 + 4? ");
+                    scanf("%d", &ans2);
+                    
+                    if(ans2 == 7)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 7.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 7 + 3? ");
+                    scanf("%d", &ans3);
+                    
+                    if(ans3 == 10)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 10.\n");
+                        wrong++;
+                    }
+                    break;
+                }
+                if(rounds == 4)
+                {
+                    printf("\nWhat is 2 + 4? ");
+                    scanf("%d", &ans1);
+                    
+                    if(ans1 == 6)
+                    {
+                        printf("\nCorrect.\n");
+                        right ++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 6.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 3 + 4? ");
+                    scanf("%d", &ans2);
+                    
+                    if(ans2 == 7)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 7.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 7 + 3? ");
+                    scanf("%d", &ans3);
+                    
+                    if(ans3 == 10)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 10.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 5 * 10? ");
+                    scanf("%d", &ans4);
+                    
+                    if(ans4 == 50)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 50.\n");
+                        wrong++;
+                    }
+                    break;
+                }
+                if(rounds == 5)
+                {
+                    printf("\nWhat is 2 + 4? ");
+                    scanf("%d", &ans1);
+                    
+                    if(ans1 == 6)
+                    {
+                        printf("\nCorrect.\n");
+                        right ++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 6.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 3 + 4? ");
+                    scanf("%d", &ans2);
+                    
+                    if(ans2 == 7)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 7.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 7 + 3? ");
+                    scanf("%d", &ans3);
+                    
+                    if(ans3 == 10)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 10.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 5 * 10? ");
+                    scanf("%d", &ans4);
+                    
+                    if(ans4 == 50)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 50.\n");
+                        wrong++;
+                    }
+                    
+                    printf("\nWhat is 108 / 4? ");
+                    scanf("%d", &ans5);
+                    
+                    if(ans5 == 27)
+                    {
+                        printf("\nCorrect.\n");
+                        right++;
+                    }
+                    else
+                    {
+                        printf("\nIncorrect.\n");
+                        printf("\nAnswer was: 27.\n");
+                        wrong++;
+                    }
+                    break;
+                }
+            }//End of case 2.
+            case 3://Display right/wrong answers for the previous round.
+            {
+                printf("\n\nYou answered %d right and %d wrong. (Hit enter to bring back the menu.)\n\n", right, wrong);//Counts the increments to display right/wrong answers.
+                flushall();
+                getchar();
+                break;
+            }//End of case 3.
+            case 4://Ends the program.
+            {
+                printf("\n\nThanks for playing. (Hit enter again to close the program.)");
+                getchar();
+                exit = 1;//This only changes in case 4, allows the program to be shutdown.
+                break;
+            }//End of case 4.
+        }// End switch()
+    }while(exit == 0);//Stops the program shutting down unless case 4 is run.
+	getchar();
+}//  End main()
